@@ -14,7 +14,6 @@
       toolbar: 'save',
     }"
   />
-  <p>Message: {{ editorContent }}</p>
 </template>
 
  <script>
