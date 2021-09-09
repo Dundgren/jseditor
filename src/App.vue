@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Editor />
+  <tinyEditor />
+  <getAllDocsButton />
 </template>
 
 <script>
-import Editor from './components/Editor.vue'
+import tinyEditor from './components/tinyEditor.vue'
+import getAllDocsButton from "./components/getAllDocsButton.vue";
 
 export default {
   name: 'App',
   components: {
-    Editor
+    tinyEditor,
+    getAllDocsButton
   }
 }
 </script>
