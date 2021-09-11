@@ -18,25 +18,24 @@
 
  <script>
 import Editor from "@tinymce/tinymce-vue";
+// import store from "../store/editorStore";
 
 export default {
   components: {
     editor: Editor,
   },
-  data() {
-    return {
-      editorContent: "",
-    };
-  },
   computed: {
     contentLengthTest() {
       return this.editorContent + ` ${this.editorContent.length}`
+    },
+    editorContent () {
+      return this.$store.state.currentContent;
     }
   },
   methods: {
     printContent: function () {
       console.log(this.editorContent);
-    },
+    }
   },
 };
 </script>
