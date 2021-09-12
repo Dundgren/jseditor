@@ -6,7 +6,8 @@ const store = createStore({
             testState: 0,
             currentId: "",
             currentTitle: "",
-            currentContent: ""
+            currentContent: "",
+            editStatus: "Editing new document"
         }
     },
     mutations: {
@@ -16,11 +17,14 @@ const store = createStore({
         setCurrentId (state, id_) {
             state.currentId = id_;
         },
-        setCurrentTitle (state, Title) {
-            state.currentTitle = Title;
+        setCurrentTitle (state, title) {
+            state.currentTitle = title;
         },
-        setCurrentContent (state, Content) {
-            state.currentContent = Content;
+        setCurrentContent (state, content) {
+            state.currentContent = content;
+        },
+        setEditStatus (state, editString) {
+            state.editStatus = editString;
         }
     }
 });

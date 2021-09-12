@@ -10,7 +10,6 @@
 
 <script>
 import axios from 'axios';
-import store from "../store/editorStore";
 
 export default {
     data() {
@@ -25,13 +24,10 @@ export default {
             this.allDocs = response.data;
         },
         setCurrentDocState: function (docId, docTitle, docContent) {
-            store.commit("setCurrentId", docId);
-            store.commit("setCurrentTitle", docTitle);
-            store.commit("setCurrentContent", docContent);
-            console.log("State: ");
-            console.log(store.state.currentId);
-            console.log(store.state.currentTitle);
-            console.log(store.state.currentContent);
+            this.$store.commit("setCurrentId", docId);
+            this.$store.commit("setCurrentTitle", docTitle);
+            this.$store.commit("setCurrentContent", docContent);
+            this.$store.commit("setEditStatus", `Editing document with id: ${docId}`);
         }
     }
 }
