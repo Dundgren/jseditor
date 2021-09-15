@@ -11,20 +11,22 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import { getAllDocs } from "../api/docs";
 
 export default {
-    data() {
-        return {
-            allDocs: [],
+    computed: {
+        allDocs () {
+            return this.$store.state.docs;
         }
     },
     methods: {
-        getAllDocs: async function () {
-            let response = await axios.get("https://jsramverk-editor-dalg20.azurewebsites.net/");
-
-            this.allDocs = response.data;
-        },
+        getAllDocs: getAllDocs,
+        // getAllDocs: async function () {
+        //     let response = await axios.get("https://jsramverk-editor-dalg20.azurewebsites.net/");
+        //     this.$store.commit('setDocs', response.data)
+        //     this.allDocs = response.data;
+        // },
         setCurrentDocState: function (docId, docTitle, docContent) {
             this.$store.commit("setCurrentId", docId);
             this.$store.commit("setCurrentTitle", docTitle);
