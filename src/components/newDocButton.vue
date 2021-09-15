@@ -1,5 +1,5 @@
 <template>
-    <button @click="newDocument">New Document</button>
+    <button @click="newDocument" id="new-doc-button">New Document</button>
 </template>
 
 <script>

@@ -1,10 +1,12 @@
 <template>
-    <button v-on:click="getAllDocs">Print All docs</button>
-    <div v-for="doc in allDocs" v-bind:key="doc._id">
-        <p>Id: {{ doc._id }}</p>
-        <p>Title: {{ doc.name }}</p>
-        <p>Content: {{ doc.html }}</p>
-        <button v-on:click="setCurrentDocState(doc._id, doc.name, doc.html)">Update</button>
+    <button v-on:click="getAllDocs" id="get-all-docs-button">Print All docs</button>
+    <div id="all-docs-container">
+        <div v-for="doc in allDocs" v-bind:key="doc._id">
+            <p>Id: {{ doc._id }}</p>
+            <p>Title: {{ doc.name }}</p>
+            <p>Content: {{ doc.html }}</p>
+            <button v-on:click="setCurrentDocState(doc._id, doc.name, doc.html)">Update</button>
+        </div>
     </div>
 </template>
 

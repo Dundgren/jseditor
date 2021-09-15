@@ -1,5 +1,5 @@
 <template>
-  <p>{{ editStatus }}</p>
+  <p id="edit-status">{{ editStatus }}</p>
   <label for="titleInput">Title:</label>
   <input type="text" id="titleInput" name="titleInput" v-model="currentTitle" />
   <editor

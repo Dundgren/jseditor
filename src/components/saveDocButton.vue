@@ -1,5 +1,5 @@
 <template>
-    <button v-on:click="saveDoc">Save</button>
+    <button v-on:click="saveDoc" id="save-doc-button">Save</button>
 </template>
 
 <script>

@@ -1,4 +1,4 @@
-  language: node_js
+language: node_js
 
 node_js:
     - "node"
@@ -14,8 +14,8 @@ git:
 before_script:
     - npm install
 
-# script:
-#     - npm test
+script:
+    - npm test
 
 after_success:
     - npm run report-coveralls

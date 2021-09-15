@@ -1,4 +1,5 @@
 # jseditor
+[![Build Status](https://app.travis-ci.com/Dundgren/jseditor.svg?branch=main)](https://app.travis-ci.com/Dundgren/jseditor)
 
 ## Project setup
 ```

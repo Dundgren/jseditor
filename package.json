@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run build && rsync -av --delete dist/ dalg20@ssh.student.bth.se:www/editor"
+    "deploy": "npm run build && rsync -av --delete dist/ dalg20@ssh.student.bth.se:www/editor",
+    "test": "testcafe firefox:headless ./tests/"
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^4.0.4",
@@ -22,7 +23,8 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "testcafe": "^1.16.0"
   },
   "eslintConfig": {
     "root": true,
