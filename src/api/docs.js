@@ -22,7 +22,7 @@ export async function saveDoc () {
             "html": this.$store.state.currentContent,
         }
         await axios.post("https://jsramverk-editor-dalg20.azurewebsites.net/", doc);
-        // getAllDocs();
+        // await getAllDocs();
         this.$store.commit("setEditStatus", "Saved new document");
     } else {
         this.$store.commit("setEditStatus", "Documents need both title and content!");

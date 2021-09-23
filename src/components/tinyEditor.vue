@@ -21,6 +21,7 @@
 
  <script>
 import Editor from "@tinymce/tinymce-vue";
+import socketIOClient from "socket.io-client";
 
 export default {
   components: {
@@ -28,7 +29,10 @@ export default {
   },
   data: function () {
     return {
-      inputTitle: ""
+      inputTitle: "",
+      socket: {},
+      // currentId: this.$store.state.currentId,
+      docData: {},
     }
   },
   computed: {
@@ -53,12 +57,44 @@ export default {
       set (data) {
         this.$store.commit("setCurrentTitle", data);
       }
+    },
+    currentId () {
+        return this.$store.state.currentId;
     }
   },
   methods: {
     printContent: function () {
       console.log(this.$store.state.currentTitle);
+    },
+    emitDocData () {
+      this.docData = {
+        _id: this.$store.state.currentId,
+        title: this.$store.state.currentTitle,
+        html: this.$store.state.currentContent
+      }
+
+      this.socket.emit("doc", this.docData);
     }
   },
+  created () {
+    this.socket = socketIOClient("http://127.0.0.1:1337");
+  },
+  mounted () {
+    this.socket.on("doc", (docData) => {
+      this.currentTitle = docData.title;
+      this.editorContent = docData.html;
+    });
+  },
+  watch: {
+    currentId (newId) {
+      this.socket.emit("create", newId);
+    },
+    editorContent () {
+      this.emitDocData();
+    },
+    currentTitle () {
+      this.emitDocData();
+    }
+  }
 };
 </script>
