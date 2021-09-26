@@ -77,7 +77,7 @@ export default {
     }
   },
   created () {
-    this.socket = socketIOClient("http://127.0.0.1:1337");
+    this.socket = socketIOClient("https://jsramverk-editor-dalg20.azurewebsites.net/");
   },
   mounted () {
     this.socket.on("doc", (docData) => {
