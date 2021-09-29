@@ -33,6 +33,7 @@ export default {
       socket: {},
       // currentId: this.$store.state.currentId,
       docData: {},
+      shouldEmit: false,
     }
   },
   computed: {
@@ -45,6 +46,7 @@ export default {
       },
       set (data) {
         this.$store.commit("setCurrentContent", data);
+        this.shouldEmit = true;
       }
     },
     editStatus () {
@@ -56,6 +58,7 @@ export default {
       },
       set (data) {
         this.$store.commit("setCurrentTitle", data);
+        this.shouldEmit = true;
       }
     },
     currentId () {
@@ -67,6 +70,7 @@ export default {
       console.log(this.$store.state.currentTitle);
     },
     emitDocData () {
+      if (this.shouldEmit) {
       this.docData = {
         _id: this.$store.state.currentId,
         title: this.$store.state.currentTitle,
@@ -74,15 +78,17 @@ export default {
       }
 
       this.socket.emit("doc", this.docData);
+      this.shouldEmit = false;
+      }
     }
   },
   created () {
-    this.socket = socketIOClient("https://jsramverk-editor-dalg20.azurewebsites.net/");
+    this.socket = socketIOClient("localhost:1337"); //https://jsramverk-editor-dalg20.azurewebsites.net/
   },
   mounted () {
     this.socket.on("doc", (docData) => {
-      this.currentTitle = docData.title;
-      this.editorContent = docData.html;
+      this.$store.commit("setCurrentTitle", docData.title);
+      this.$store.commit("setCurrentContent", docData.html);
     });
   },
   watch: {
