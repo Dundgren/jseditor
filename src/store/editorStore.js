@@ -8,7 +8,9 @@ const store = createStore({
             currentTitle: "",
             currentContent: "",
             editStatus: "Editing new document",
-            docs: []
+            docs: [],
+            currentJwt: "",
+            currentUser: "",
         }
     },
     mutations: {
@@ -28,7 +30,13 @@ const store = createStore({
             state.editStatus = editString;
         },
         setDocs(state, docs) {
-            state.docs = docs
+            state.docs = docs;
+        },
+        setCurrentJwt(state, jwt) {
+            state.currentJwt = jwt;
+        },
+        setCurrentUser(state, user) {
+            state.currentUser = user;
         },
         updateDoc(state, doc) {
             const docIndex = state.docs.findIndex((doc) => doc._id);
