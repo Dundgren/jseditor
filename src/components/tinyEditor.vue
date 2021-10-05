@@ -83,7 +83,7 @@ export default {
     }
   },
   created () {
-    this.socket = socketIOClient("localhost:1337");//https://jsramverk-editor-dalg20.azurewebsites.net/
+    this.socket = socketIOClient("https://jsramverk-editor-dalg20.azurewebsites.net/");//https://jsramverk-editor-dalg20.azurewebsites.net/
   },
   mounted () {
     this.socket.on("doc", (docData) => {

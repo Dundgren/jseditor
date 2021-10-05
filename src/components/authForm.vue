@@ -49,7 +49,7 @@ export default {
                 mail: this.loginMail,
                 pass: this.loginPass
             }
-            let response = await axios.post("https://jsramverk-editor-dalg20.azurewebsites.net/auth/login", doc);
+            let response = await axios.post("https://jsramverk-editor-dalg20.azurewebsites.net/auth/login", doc); //https://jsramverk-editor-dalg20.azurewebsites.net/auth/login
 
             if (response.data) {
                 this.$store.commit("setCurrentUser", this.loginMail);

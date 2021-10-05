@@ -1,14 +1,29 @@
 import axios from 'axios';
 
 export async function getAllDocs () {
-    const config = {
+    // const config = {
+    //     headers: {
+    //         jwt: this.$store.state.currentJwt,
+    //         user: this.$store.state.currentUser
+    //     }
+    // };
+    // let response = await axios.get("http://localhost:1337/docs", config); //https://jsramverk-editor-dalg20.azurewebsites.net/docs
+
+    fetch('https://jsramverk-editor-dalg20.azurewebsites.net/graphql', {
+        method: 'POST',
         headers: {
-            jwt: this.$store.state.currentJwt,
-            user: this.$store.state.currentUser
-        }
-    };
-    let response = await axios.get("https://jsramverk-editor-dalg20.azurewebsites.net/docs", config);
-    this.$store.commit('setDocs', response.data);
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            "user": this.$store.state.currentUser,
+        },
+        body: JSON.stringify({
+            query: "{ docs { _id name html users } }"
+        })
+    })
+        .then(r => r.json())
+        .then(response => this.$store.commit('setDocs', response.data.docs));
+
+    // 
 }
 
 export async function saveDoc () {
