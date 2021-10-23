@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getAllDocs () {
+export function getAllDocs () {
     // const config = {
     //     headers: {
     //         jwt: this.$store.state.currentJwt,

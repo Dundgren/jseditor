@@ -21,7 +21,7 @@
 
  <script>
 import Editor from "@tinymce/tinymce-vue";
-import socketIOClient from "socket.io-client";
+// import socketIOClient from "socket.io-client";
 
 export default {
   components: {
@@ -31,7 +31,6 @@ export default {
     return {
       inputTitle: "",
       socket: {},
-      // currentId: this.$store.state.currentId,
       docData: {},
       shouldEmit: false,
     }
@@ -82,25 +81,25 @@ export default {
       }
     }
   },
-  created () {
-    this.socket = socketIOClient("https://jsramverk-editor-dalg20.azurewebsites.net/");//https://jsramverk-editor-dalg20.azurewebsites.net/
-  },
-  mounted () {
-    this.socket.on("doc", (docData) => {
-      this.$store.commit("setCurrentTitle", docData.title);
-      this.$store.commit("setCurrentContent", docData.html);
-    });
-  },
-  watch: {
-    currentId (newId) {
-      this.socket.emit("create", newId);
-    },
-    editorContent () {
-      this.emitDocData();
-    },
-    currentTitle () {
-      this.emitDocData();
-    }
-  }
+  // created () {
+  //   this.socket = socketIOClient("https://jsramverk-editor-dalg20.azurewebsites.net/");//https://jsramverk-editor-dalg20.azurewebsites.net/
+  // },
+  // mounted () {
+  //   this.socket.on("doc", (docData) => {
+  //     this.$store.commit("setCurrentTitle", docData.title);
+  //     this.$store.commit("setCurrentContent", docData.html);
+  //   });
+  // },
+  // watch: {
+  //   currentId (newId) {
+  //     this.socket.emit("create", newId);
+  //   },
+  //   editorContent () {
+  //     this.emitDocData();
+  //   },
+  //   currentTitle () {
+  //     this.emitDocData();
+  //   }
+//   }
 };
 </script>
