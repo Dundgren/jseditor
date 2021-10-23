@@ -2,6 +2,7 @@
   <div v-if="currentJwt">
     <newDocButton />
     <saveDocButton />
+    <download-pdf-button />
     <tinyEditor />
     <getAllDocsButton />
   </div>
@@ -16,6 +17,7 @@ import getAllDocsButton from "./components/getAllDocsButton.vue";
 import saveDocButton from "./components/saveDocButton.vue";
 import newDocButton from "./components/newDocButton.vue";
 import authForm from "./components/authForm.vue";
+import downloadPdfButton from "./components/downloadPdfButton.vue";
 
 export default {
   name: 'App',
@@ -25,6 +27,7 @@ export default {
     getAllDocsButton,
     newDocButton,
     authForm,
+    downloadPdfButton,
   },
   computed: {
     currentJwt () {
