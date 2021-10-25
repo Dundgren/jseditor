@@ -2,6 +2,7 @@
   <p id="edit-status">{{ editStatus }}</p>
   <label for="titleInput">Title:</label>
   <input type="text" id="titleInput" name="titleInput" v-model="currentTitle" />
+  <addUserButton  v-if="this.$store.state.currentId" />
   <editor
     id="tinyEditor"
     api-key="no-api-key"
@@ -21,11 +22,13 @@
 
  <script>
 import Editor from "@tinymce/tinymce-vue";
+import addUserButton from "./addUserButton.vue";
 // import socketIOClient from "socket.io-client";
 
 export default {
   components: {
     editor: Editor,
+    addUserButton
   },
   data: function () {
     return {
