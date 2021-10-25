@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getAllDocs () {
+export async function getAllDocs () {
     // const config = {
     //     headers: {
     //         jwt: this.$store.state.currentJwt,
@@ -8,8 +8,9 @@ export function getAllDocs () {
     //     }
     // };
     // let response = await axios.get("http://localhost:1337/docs", config); //https://jsramverk-editor-dalg20.azurewebsites.net/docs
+    // this.$store.commit("setDocs", response.data);
 
-    fetch('https://jsramverk-editor-dalg20.azurewebsites.net/graphql', {
+    fetch('http://localhost:1337/graphql', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -22,8 +23,6 @@ export function getAllDocs () {
     })
         .then(r => r.json())
         .then(response => this.$store.commit('setDocs', response.data.docs));
-
-    // 
 }
 
 export async function saveDoc () {
