@@ -6,7 +6,7 @@ export async function sendMail (receivingMail) {
         mail: receivingMail
     }
 
-    axios.post("http://localhost:1337/mail/sendmail", data);
+    axios.post("https://jsramverk-editor-dalg20.azurewebsites.net/mail/sendmail", data);
 
     const previousMessage = this.$store.state.editStatus;
 

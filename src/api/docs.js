@@ -1,16 +1,7 @@
 import axios from 'axios';
 
 export async function getAllDocs () {
-    // const config = {
-    //     headers: {
-    //         jwt: this.$store.state.currentJwt,
-    //         user: this.$store.state.currentUser
-    //     }
-    // };
-    // let response = await axios.get("http://localhost:1337/docs", config); //https://jsramverk-editor-dalg20.azurewebsites.net/docs
-    // this.$store.commit("setDocs", response.data);
-
-    fetch('http://localhost:1337/graphql', {
+    fetch('https://jsramverk-editor-dalg20.azurewebsites.net/graphql', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
